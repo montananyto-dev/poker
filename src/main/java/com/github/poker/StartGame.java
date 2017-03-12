@@ -13,6 +13,5 @@ public class StartGame
         //Create a new instance of Board
         Board board = Board.getInstance();
 
-
     }
 }

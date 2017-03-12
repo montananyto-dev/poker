@@ -2,15 +2,15 @@ package com.github.poker;
 
 public class Board{
 
-public static Board board;
+private static Board board;
 
-public Board(){}
+private Board(){}
 
 public static Board getInstance(){
   if(board == null){
     board = new Board();
+    System.out.println("Board created");
   }
   return board;
   }
-
 }
