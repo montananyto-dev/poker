@@ -1,3 +1,6 @@
 package com.github.poker;
 
-public Card
+public class Card{
+
+
+}
