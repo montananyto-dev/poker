@@ -12,7 +12,6 @@ Board - pot - flop/turn/river(cards)
 Player - hand - money -
 HandRank
 
-
 Fold
 check
 call
