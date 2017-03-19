@@ -3,7 +3,7 @@ package com.github.poker;
 
 import java.util.ArrayList;
 
-public class Board{
+public class Board implements CardHolder {
 
 private static Board board;
 private ArrayList<Card> boardHand;
@@ -16,11 +16,14 @@ public static Board getInstance(){
     System.out.println("Board created");
   }
   return board;
-  }
+}
+
+public void receiveCard(Card newCard) {
+  boardHand.add(newCard);
+}
 public void setBoardHand(ArrayList<Card> boardHand){
   this.boardHand = new ArrayList<Card>();
-  boardHand.add(Deck.getInstance().drawCard());
-  boardHand.add(Deck.getInstance().drawCard());
+  Deck.getInstance().giveCard(this,3);
 }
 public ArrayList<Card> getBoardHand(){
   return boardHand;

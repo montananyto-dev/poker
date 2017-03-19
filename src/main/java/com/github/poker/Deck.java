@@ -22,13 +22,15 @@ class Deck {
     return deck;
   }
 
-  public Card drawCard(){
-  		Random rnd = new Random();
+  public void giveCard(CardHolder receiver, int amount) {
+    for(int i=0; i<amount; i++) {
+      Random rnd = new Random();
   		Card drawn = cards.get(rnd.nextInt(cards.size()));
   		cards.remove(drawn);
 
-  		return drawn;
-  	}
+      receiver.receiveCard(drawn);
+    }
+  }
 
     public void displayAllCards(){
 
