@@ -7,6 +7,10 @@ class Card {
   public Card(Rank rank, Suit suit) {
     m_rank = rank;
     m_suit = suit;
-    System.out.println(rank + " OF " + suit + "S");
   }
+
+  public String toString() {
+    return m_rank + " OF " + m_suit + "S";
+  }
+
 }

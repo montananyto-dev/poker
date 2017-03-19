@@ -1,10 +1,11 @@
 package com.github.poker;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 class Deck {
   private static Deck deck;
-  private ArrayList<Card> cards;
+  private static ArrayList<Card> cards;
 
   private Deck() {
     cards = new ArrayList<Card>();
@@ -12,8 +13,6 @@ class Deck {
     for(Rank r : Rank.values())
       for(Suit s : Suit.values())
         cards.add(new Card(r,s));
-
-
   }
 
   public static Deck getInstance() {
@@ -22,4 +21,29 @@ class Deck {
     }
     return deck;
   }
-}
+
+  public  Card drawCard(){
+  		Random rnd = new Random();
+  		Card drawn = cards.get(rnd.nextInt(cards.size()));
+  		cards.remove(drawn);
+
+  		return drawn;
+  	}
+
+    public  ArrayList<Card> drawPair() {
+  		ArrayList<Card> pair = new ArrayList<>();
+  		pair.add(drawCard());
+  		pair.add(drawCard());
+
+  		return pair;
+  	}
+
+    public  void displayAllCards(){
+
+  		for(Card card : cards ){
+
+  			System.out.println(card.toString());
+  		}
+  		System.out.println("\n");
+  	}
+  }
