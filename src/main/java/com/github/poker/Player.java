@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Player{
 
-public String name;
-public int age;
-public ArrayList<Card> hand;
+private String name;
+private int age;
+private ArrayList<Card> hand;
 
 
 
