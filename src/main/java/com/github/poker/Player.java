@@ -14,7 +14,10 @@ public Player (String name, int age){
   this.name = name;
   this.age = age;
   this.hand = new ArrayList<Card>();
-  hand.addAll(Deck.getInstance().drawPair());
+
+  //Initial hand
+  hand.add(Deck.getInstance().drawCard());
+  hand.add(Deck.getInstance().drawCard());
 }
 
 public void setName(String name){

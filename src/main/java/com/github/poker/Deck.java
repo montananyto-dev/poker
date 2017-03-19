@@ -22,7 +22,7 @@ class Deck {
     return deck;
   }
 
-  public  Card drawCard(){
+  public Card drawCard(){
   		Random rnd = new Random();
   		Card drawn = cards.get(rnd.nextInt(cards.size()));
   		cards.remove(drawn);
@@ -30,15 +30,7 @@ class Deck {
   		return drawn;
   	}
 
-    public  ArrayList<Card> drawPair() {
-  		ArrayList<Card> pair = new ArrayList<>();
-  		pair.add(drawCard());
-  		pair.add(drawCard());
-
-  		return pair;
-  	}
-
-    public  void displayAllCards(){
+    public void displayAllCards(){
 
   		for(Card card : cards ){
 
