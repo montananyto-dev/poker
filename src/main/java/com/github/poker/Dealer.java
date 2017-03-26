@@ -4,9 +4,13 @@ import java.util.ArrayList;
 
 public class Dealer {
 
+  private static Dealer dealer;
+
   private String name;
   private ArrayList<Player> players;
-  private static Dealer dealer;
+  
+  int startIdx;
+  Player subject;
 
   private Dealer() {}
 
@@ -28,7 +32,12 @@ public class Dealer {
     this.players = players;
   }
 
-  public ArrayList<Player> getPlayer(){
-    return player;
+  public void start() {
+    
   }
+
+  public void init() {
+    startIdx=0;
+  }
+  
 }
