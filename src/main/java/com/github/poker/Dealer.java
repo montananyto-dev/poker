@@ -1,12 +1,22 @@
-package.com.github.com ;
+package com.github.poker;
+
+import java.util.ArrayList;
 
 public class Dealer{
 
-  public static ArrayList<Player> player;
+  private String name;
+  private static ArrayList<Player> player;
+  private static Dealer dealer;
 
-public Dealer(String name){
-  this.name = name;
+private Dealer(){}
+
+public static Dealer getInstance(){
+  if(dealer == null){
+    dealer = new Dealer();
+    System.out.println("Dealer created");
   }
+  return dealer;
+}
 
 public void setName(String name){
   this.name = name;
@@ -18,7 +28,7 @@ public String getName(){
 public void setPlayer(ArrayList<Player> player){
   this.player = player;
 }
-public Player getPlayer(){
+public ArrayList<Player> getPlayer(){
   return player;
 }
 }

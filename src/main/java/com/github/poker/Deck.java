@@ -29,6 +29,7 @@ class Deck {
   		cards.remove(drawn);
 
       receiver.receiveCard(drawn);
+      System.out.println("giveCard() called");
     }
   }
 

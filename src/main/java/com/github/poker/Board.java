@@ -24,6 +24,7 @@ public void receiveCard(Card newCard) {
 public void setBoardHand(ArrayList<Card> boardHand){
   this.boardHand = new ArrayList<Card>();
   Deck.getInstance().giveCard(this,3);
+
 }
 public ArrayList<Card> getBoardHand(){
   return boardHand;
