@@ -17,7 +17,7 @@
 
 ROUND SETUP
 ------------
-Dealer asks for Player(name & age)
+Dealer asks for Players (name & age)
 Each player will begin with £1000
 
 INITIAL BETS 
