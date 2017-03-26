@@ -1,0 +1,45 @@
+[ROUND LOGIC] {
+    Dealer asks player for check(), raise() or fold()
+        If a Player chooses to check()...
+            ...They add equal value as the previous Player...
+            ...Player is labelled "checker.
+        If a Player chooses to raise()
+            ...They add a greater value than the previous Player...
+            ...Player is labelled "raiser"
+        If a Player chooses to fold()
+            ...They do not add a value...
+            ...Player is labelled "folder"
+            ...They exit the round.
+
+    Dealer moves to next Player
+    REPEAT UNTIL Dealer has returned to the most-recent "raiser"
+}
+
+ROUND SETUP
+------------
+Dealer asks for Player(name & age)
+Each player will begin with £1000
+
+INITIAL BETS 
+------------
+Dealer asks first player for "small blind"
+Player adds value to the board
+Dealer asks second player for "big blind"
+[value is added to board]
+Dealer proves 2 cards to each player
+Perform [ROUND LOGIC]
+
+THE FLOP
+---------
+Dealer adds 3 cards to the Board 
+Perform [ROUND LOGIC]
+
+THE TURN 
+--------
+Dealer adds 1 card to the Board
+Perform [ROUND LOGIC]
+
+THE RIVER
+---------
+Dealer adds 1 card to the Board
+Perform [ROUND LOGIC]
