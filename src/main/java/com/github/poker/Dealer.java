@@ -11,10 +11,8 @@ public class Dealer {
   private Dealer() {}
 
   public static Dealer getInstance() {
-    if(dealer == null){
+    if(dealer == null)
       dealer = new Dealer();
-      System.out.println("Dealer created");
-    }
     return dealer;
   }
 
