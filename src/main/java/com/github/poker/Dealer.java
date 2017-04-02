@@ -9,7 +9,8 @@ public class Dealer {
   private String name;
   private ArrayList<Player> players;
   
-  int blindIdx;
+  int smallAmount=25;
+  int smallIdx=0;
   
   Player subject;
 
@@ -46,7 +47,7 @@ public class Dealer {
   }
 
   public void initialBets() {
-    nextPlayer(subject);
+    placeBlinds();
   }
 
   public void flop() {
@@ -64,11 +65,21 @@ public class Dealer {
   public void declareWinner() {
 
   }
+  public void placeBlinds() {
+    nextPlayer(subject);
+    subject.placeBet(smallAmount);
+    nextPlayer(subject);
+    subject.placeBet(smallAmount*2); //big blind
+  }
 
-  public Player nextPlayer(Player current) {
-    if(current==null) {
-      return players.get(blindIdx);
+  public void nextPlayer(Player currentPlayer) {
+    if(currentPlayer==null) {
+      currentPlayer=players.get(smallIdx);
+      smallIdx++; //For next round
     }
-    return null;
+
+    int nextIdx = players.indexOf(currentPlayer)+1;
+
+    currentPlayer= (nextIdx == players.size() ? players.get(0) : players.get(nextIdx));
   }
 }
