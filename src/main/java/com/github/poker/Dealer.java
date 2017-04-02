@@ -66,25 +66,25 @@ public class Dealer {
 
   }
   public void placeBlinds() {
-    nextPlayer(subject);
+    incrementPlayer(subject);
     subject.placeBet(smallAmount);
-    nextPlayer(subject);
+    incrementPlayer(subject);
     subject.placeBet(smallAmount*2); //big blind
   }
 
-  public void nextPlayer(Player currentPlayer) {
+  public void incrementPlayer(Player currentPlayer) {
     if(currentPlayer==null) {
       currentPlayer=players.get(smallIdx);
-      nextIndex(smallIdx); //For next round
+      incrementIndex(smallIdx); //For next round
     }
 
     Integer nextIdx = players.indexOf(currentPlayer)+1;
-    nextIndex(nextIdx);
+    incrementIndex(nextIdx);
 
     currentPlayer = players.get(nextIdx);
   }
 
-  public void nextIndex(Integer currentIdx) {
+  public void incrementIndex(Integer currentIdx) {
     currentIdx = ( currentIdx+1 == players.size() ? 0 : currentIdx+1 );
   }
 }
