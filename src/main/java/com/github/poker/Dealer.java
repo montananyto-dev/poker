@@ -9,8 +9,8 @@ public class Dealer {
   private String name;
   private ArrayList<Player> players;
   
+  Integer smallIdx=0;
   int smallAmount=25;
-  int smallIdx=0;
   
   Player subject;
 
@@ -75,11 +75,16 @@ public class Dealer {
   public void nextPlayer(Player currentPlayer) {
     if(currentPlayer==null) {
       currentPlayer=players.get(smallIdx);
-      smallIdx++; //For next round
+      nextIndex(smallIdx); //For next round
     }
 
-    int nextIdx = players.indexOf(currentPlayer)+1;
+    Integer nextIdx = players.indexOf(currentPlayer)+1;
+    nextIndex(nextIdx);
 
-    currentPlayer= (nextIdx == players.size() ? players.get(0) : players.get(nextIdx));
+    currentPlayer = players.get(nextIdx);
+  }
+
+  public void nextIndex(Integer currentIdx) {
+    currentIdx = ( currentIdx+1 == players.size() ? 0 : currentIdx+1 );
   }
 }
