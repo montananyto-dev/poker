@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Player implements CardHolder {
 
-public String name;
-public int age;
-public ArrayList<Card> hand;
-public int chips;
+private String name;
+private int age;
+private ArrayList<Card> hand;
+private int chips;
 
 public Player (String name, int age,int chips){
         this.name = name;
@@ -62,4 +62,13 @@ public void printHand() {
         for(Card aCard : hand)
                 System.out.print(aCard + "\n");
 }
+public void placeBet(int amount){
+        chips-= amount;
+        Board.getInstance().setPot(amount);
+        System.out.println("this is what you just bet " + amount);
+        //What happen if the player doesn't have enough chips for the small or big blind
+
+}
+
+
 }

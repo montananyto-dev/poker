@@ -7,27 +7,35 @@ public class Board implements CardHolder {
 
 private static Board board;
 private ArrayList<Card> boardHand;
+private int pot;
 
-private Board(){}
+private Board(){
+}
 
 public static Board getInstance(){
-  if(board == null){
-    board = new Board();
-    System.out.println("Board created");
-  }
-  return board;
+        if(board == null) {
+                board = new Board();
+                System.out.println("Board created");
+        }
+        return board;
 }
 
 public void receiveCard(Card newCard) {
-  boardHand.add(newCard);
+        boardHand.add(newCard);
 }
 public void setBoardHand(ArrayList<Card> boardHand){
-  this.boardHand = new ArrayList<Card>();
-  Deck.getInstance().giveCard(this,3);
+        this.boardHand = new ArrayList<Card>();
+        Deck.getInstance().giveCard(this,3);
 
 }
 public ArrayList<Card> getBoardHand(){
-  return boardHand;
+        return boardHand;
+}
+public void setPot(int pot){
+        this.pot = pot;
+}
+public int getPot(){
+        return pot;
 }
 
 }
