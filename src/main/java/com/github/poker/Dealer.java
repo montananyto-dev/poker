@@ -39,11 +39,21 @@ public class Dealer {
     return this;
   }
 
+  private void declarePhase(String phaseName) {
+    String text=phaseName+" Start";
+    System.out.println(text);
+    for (char c : text.toCharArray())
+      System.out.print("=");
+    System.out.println();
+  }
+
   public void startSession() {
+    declarePhase("Session");
     startGame();
   }
 
   private void startGame() {
+    declarePhase("Game");
     initialBets();
     flop();
     turn();
@@ -52,6 +62,7 @@ public class Dealer {
   }
 
   public void initialBets() {
+    declarePhase("Initial Bets");
     subject=players.get(smallIdx);
     placeBlinds();
 
