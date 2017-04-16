@@ -9,7 +9,7 @@ public class Dealer {
   private String name;
   private ArrayList<Player> players;
   
-  Integer smallIdx=0;
+  int smallIdx=0;
   int smallAmount=25;
   
   Player subject;
@@ -38,7 +38,7 @@ public class Dealer {
     startGame();
   }
 
-  public void startGame() {
+  private void startGame() {
     initialBets();
     flop();
     turn();
@@ -47,7 +47,21 @@ public class Dealer {
   }
 
   public void initialBets() {
+    subject=players.get(smallIdx);
     placeBlinds();
+
+    nextPlayer();
+    reqAction(subject);
+  }
+
+  private void placeBlinds() {
+    subject.placeBet(smallAmount);
+    nextPlayer();
+    subject.placeBet(smallAmount*2); //big blind
+  }
+
+  private void reqAction(Player player) {
+    player.getAction(Board.getInstance().getPreviousAmount());
   }
 
   public void flop() {
@@ -65,26 +79,15 @@ public class Dealer {
   public void declareWinner() {
 
   }
-  public void placeBlinds() {
-    incrementPlayer(subject);
-    subject.placeBet(smallAmount);
-    incrementPlayer(subject);
-    subject.placeBet(smallAmount*2); //big blind
-  }
 
-  public void incrementPlayer(Player currentPlayer) {
-    if(currentPlayer==null) {
-      currentPlayer=players.get(smallIdx);
-      incrementIndex(smallIdx); //For next round
+  private void nextPlayer() {
+    int nextIdx = players.indexOf(subject) + 1;
+    if(nextIdx == players.size()) {
+      subject = players.get(0);
+    } else {
+      subject = players.get(nextIdx);
     }
-
-    Integer nextIdx = players.indexOf(currentPlayer)+1;
-    incrementIndex(nextIdx);
-
-    currentPlayer = players.get(nextIdx);
   }
 
-  public void incrementIndex(Integer currentIdx) {
-    currentIdx = ( currentIdx+1 == players.size() ? 0 : currentIdx+1 );
-  }
+
 }

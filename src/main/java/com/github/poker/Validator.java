@@ -87,4 +87,26 @@ class Validator {
 
         return amount;
     }
+
+    public static Action reqAction() {
+        String input;
+
+        while(true) {
+            System.out.println("Check, Raise or Fold? [C,R,F]");
+
+            input = scan.next();
+            input = input.toUpperCase();
+            switch(input) {
+                case "C":
+                    return Action.CHECK;
+                case "R":
+                    return Action.RAISE;
+                case "F":
+                    return Action.FOLD;
+                default:
+                    System.out.println("Invalid input.");
+            }
+        }
+
+    }
 }
