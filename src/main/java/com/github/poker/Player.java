@@ -8,15 +8,18 @@ public class Player implements CardHolder {
         private ArrayList<Card> hand;
         private int chips;
 
-        public Player (String name, int chips){
+        public Player (String name){
                 this.name = name;
                 this.hand = new ArrayList<Card>();
-                this.chips = chips;
 
                 //Initial hand
                 Deck.getInstance().giveCard(this,2);
 
                 printHand();
+        }
+
+        public void setChips(int chips) {
+                this.chips = chips;
         }
 
         public void receiveCard(Card newCard) {
@@ -38,9 +41,7 @@ public class Player implements CardHolder {
         public ArrayList<Card> getHand(){
                 return hand;
         }
-        public void setChips(int chips){
-                this.chips = chips;
-        }
+
         public int getChips(){
                 return chips;
         }

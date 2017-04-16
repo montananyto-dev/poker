@@ -22,16 +22,21 @@ public class Dealer {
     return dealer;
   }
 
-  public void setName(String name) {
+  public Dealer setName(String name) {
     this.name = name;
+    return this;
   }
 
   public String getName(){
     return name;
   }
 
-  public void setPlayers(ArrayList<Player> players) { 
+  public Dealer setPlayers(ArrayList<Player> players, int chips) {
+    for(Player player: players)
+      player.setChips(chips);
+
     this.players = players;
+    return this;
   }
 
   public void startSession() {
