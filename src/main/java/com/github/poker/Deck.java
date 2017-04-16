@@ -28,8 +28,7 @@ class Deck {
   		Card drawn = cards.get(rnd.nextInt(cards.size()));
   		cards.remove(drawn);
 
-      receiver.receiveCard(drawn);
-      System.out.println("giveCard() called");
+        receiver.receiveCard(drawn);
     }
   }
 
