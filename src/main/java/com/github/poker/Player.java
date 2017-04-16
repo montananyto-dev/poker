@@ -16,10 +16,7 @@ public class Player implements CardHolder {
                 //Initial hand
                 Deck.getInstance().giveCard(this,2);
 
-                System.out.println("I have...");
-                for(int i=0; i<2; i++) {
-                        System.out.println(hand.get(i));
-                }
+                printHand();
         }
 
         public void receiveCard(Card newCard) {
@@ -49,8 +46,10 @@ public class Player implements CardHolder {
         }
 
         public void printHand() {
-                for(Card aCard : hand)
-                        System.out.print(aCard + "\n");
+                System.out.println("["+this.name+"] has...");
+                for(int i=0; i<2; i++) {
+                        System.out.println("\t>"+hand.get(i));
+                }
         }
         public void placeBet(int amount){
                 chips-= amount;
