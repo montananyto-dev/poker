@@ -16,7 +16,6 @@ public class Board implements CardHolder {
         public static Board getInstance(){
                 if(board == null) {
                         board = new Board();
-                        System.out.println("Board created");
                 }
                 return board;
         }
