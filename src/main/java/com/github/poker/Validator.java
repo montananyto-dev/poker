@@ -38,31 +38,27 @@ class Validator {
         return input;
     }
 
-    public static int reqChips(){
-        System.out.println("How much do you want to give to each player");
-        int chips = scan.nextInt();
-        scan.nextLine();
-
-        return chips;
-    }
-
-    public static int reqPlayerNumber() {
+    public static int reqNumber(String message, int max, int min) {
         boolean isNumber = false;
         boolean aboveLimit = true;
+        boolean belowLimit = true;
         String input;
         int amount=0;
         do {
-                System.out.println("How many Players (max. 5)");
+                System.out.println(message);
                 input = scan.nextLine();
 
                 isNumber = isNumeric(input);
                 if(isNumber) {
                         amount = Integer.parseInt(input);
-                        aboveLimit = amount > 5;
+                        aboveLimit = amount > max;
+                        belowLimit = amount < min;
+
                         if(aboveLimit) { System.out.println("Above maximum."); }
+                        if(belowLimit) { System.out.println("Below minimum."); }
                 } else { System.out.println("Not a number."); }
 
-        } while(!isNumber || aboveLimit);
+        } while(!isNumber || aboveLimit || belowLimit);
 
         return amount;
     }

@@ -10,9 +10,9 @@ public class StartGame {
 
                 ArrayList<Player> players = new ArrayList<Player>();
 
-                int numberOfPlayers = Validator.reqPlayerNumber();
+                int numberOfPlayers = Validator.reqNumber("How many Players (max. 5)", 5, 1);
 
-                int chips = Validator.reqChips();
+                int chips = Validator.reqNumber("How many chips per player", 2000, 50);
 
                 do {
                         String name = Validator.reqPlayerName(players);
