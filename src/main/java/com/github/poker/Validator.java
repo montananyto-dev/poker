@@ -23,27 +23,6 @@ class Validator {
                 return false;
         }
         return true;
-    }   
-
-    public static int reqPlayerAge() {
-        int age = 0;
-        boolean tooYoung = true;
-        boolean isNumber = false;
-        String input;
-        do {
-                System.out.println("Age of the player");
-                input = scan.nextLine();
-
-                isNumber = isNumeric(input);
-                if(isNumber)  {
-                        age = Integer.parseInt(input);
-                        tooYoung = age < 18;
-                        if(tooYoung) { System.out.println("Too young."); }
-                } else { System.out.println("Not a number."); }
-
-        } while(tooYoung || !isNumber);
-
-        return age;
     }
 
     public static String reqPlayerName(ArrayList<Player> currentPlayers) {
