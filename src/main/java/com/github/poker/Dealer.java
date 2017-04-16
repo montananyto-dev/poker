@@ -61,7 +61,14 @@ public class Dealer {
   }
 
   private void reqAction(Player player) {
-    player.getAction(Board.getInstance().getPreviousAmount());
+    Action action = player.getAction(Board.getInstance().getPreviousAmount());
+    switch(action) {
+      case CHECK:
+        player.placeBet(Board.getInstance().getPreviousAmount());
+        break;
+      default:
+        System.out.println("Handle RAISE and FOLD");
+    }
   }
 
   public void flop() {
