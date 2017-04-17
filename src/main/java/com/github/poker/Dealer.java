@@ -94,9 +94,12 @@ private void reqAction(Player player) {
         case CHECK:
                 player.placeBet(board.getPreviousAmount());
                 break;
-        // case RAISE:
-        //         Validator.reqRaise("How much would you like to raise(min. "+Board.getInstance().getPreviousAmount()+" and max. "+Board.getInstance().getChips())",50,2000");
-        // case FOLD:
+        case RAISE:
+                //int minimumRaise = board.getPreviousAmount();
+                int maximumRaise = player.getChips();
+                int amount = Validator.reqNumber("How much would you like to raise(min. 1 and max. "+maximumRaise,1,maximumRaise);
+                player.placeBet(amount+board.getPreviousAmount());
+                break;
 
         default:
                 System.out.println("Handle RAISE and FOLD");
