@@ -62,12 +62,7 @@ public void placeBet(int amount){
 
 public Action getAction(int prevAmount) {
         System.out.println("["+this.name+"] You have "+this.chips+ " chips. Last bet was "+prevAmount+".");
-        return Validator.reqAction();
+        return Validator.returnAction();
 }
-
-
-
-
-
 
 }

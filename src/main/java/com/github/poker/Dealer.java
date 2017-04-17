@@ -106,7 +106,6 @@ private void reqAction(Player player) {
                 checkCount++;
                 break;
         case RAISE:
-                //int minimumRaise = board.getPreviousAmount();
                 int maximumRaise = player.getChips();
                 int amount = Validator.reqNumber("How much would you like to raise(min. 1 and max. "+maximumRaise,1,maximumRaise);
                 player.placeBet(amount+board.getPreviousAmount());
@@ -123,15 +122,17 @@ private void reqAction(Player player) {
 }
 
 public void flop() {
+        System.out.print("First 3 cards face up");
 
 }
 
 public void turn() {
+        System.out.println("Additional card to the flop face up ");
 
 }
 
 public void river() {
-
+        System.out.println("Additional card to the turn face up ");
 }
 
 public void declareWinner() {

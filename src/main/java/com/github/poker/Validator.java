@@ -63,7 +63,7 @@ public static int reqNumber(String message, int min,int max) {
         return amount;
 }
 
-public static Action reqAction() {
+public static Action returnAction() {
         String input;
 
         while(true) {
