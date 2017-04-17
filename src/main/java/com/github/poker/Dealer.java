@@ -4,113 +4,120 @@ import java.util.ArrayList;
 
 public class Dealer {
 
-  private static Dealer dealer;
+private static Dealer dealer;
 
-  private String name;
-  private ArrayList<Player> players;
-  
-  int smallIdx=0;
-  int smallAmount=25;
-  
-  Player subject;
+private String name;
+private ArrayList<Player> players;
 
-  private Dealer() {}
+int smallIdx=0;
+int smallBlind;
 
-  public static Dealer getInstance() {
-    if(dealer == null)
-      dealer = new Dealer();
-    return dealer;
-  }
+Player subject;
 
-  public Dealer setName(String name) {
-    this.name = name;
-    return this;
-  }
+private Dealer() {
+}
 
-  public String getName(){
-    return name;
-  }
+public static Dealer getInstance() {
+        if(dealer == null)
+                dealer = new Dealer();
+        return dealer;
+}
 
-  public Dealer setPlayers(ArrayList<Player> players, int chips) {
-    for(Player player: players)
-      player.setChips(chips);
+public Dealer setName(String name) {
+        this.name = name;
+        return this;
+}
 
-    this.players = players;
-    return this;
-  }
+public String getName(){
+        return name;
+}
 
-  private void declarePhase(String phaseName) {
-    String text=phaseName+" Start";
-    System.out.println(text);
-    for (char c : text.toCharArray())
-      System.out.print("=");
-    System.out.println();
-  }
+public Dealer setPlayers(ArrayList<Player> players, int chips) {
+        for(Player player: players)
+                player.setChips(chips);
 
-  public void startSession() {
-    declarePhase("Session");
-    startGame();
-  }
+        this.players = players;
+        return this;
+}
+public void setSmallBlind(int smallBlind){
+        this.smallBlind = smallBlind;
+}
+public int getSmallBlind(){
+        return this.smallBlind;
+}
 
-  private void startGame() {
-    declarePhase("Game");
-    initialBets();
-    flop();
-    turn();
-    river();
-    declareWinner();
-  }
+private void declarePhase(String phaseName) {
+        String text=phaseName+" Start";
+        System.out.println(text);
+        for (char c : text.toCharArray())
+                System.out.print("=");
+        System.out.println();
+}
 
-  public void initialBets() {
-    declarePhase("Initial Bets");
-    subject=players.get(smallIdx);
-    placeBlinds();
+public void startSession() {
+        declarePhase("Session");
+        startGame();
+}
 
-    nextPlayer();
-    reqAction(subject);
-  }
+private void startGame() {
+        declarePhase("Game");
+        initialBets();
+        flop();
+        turn();
+        river();
+        declareWinner();
+}
 
-  private void placeBlinds() {
-    subject.placeBet(smallAmount);
-    nextPlayer();
-    subject.placeBet(smallAmount*2); //big blind
-  }
+public void initialBets() {
+        declarePhase("Initial Bets");
+        subject=players.get(smallIdx);
+        placeBlinds();
 
-  private void reqAction(Player player) {
-    Action action = player.getAction(Board.getInstance().getPreviousAmount());
-    switch(action) {
-      case CHECK:
-        player.placeBet(Board.getInstance().getPreviousAmount());
-        break;
-      default:
-        System.out.println("Handle RAISE and FOLD");
-    }
-  }
+        nextPlayer();
+        reqAction(subject);
+}
 
-  public void flop() {
+private void placeBlinds() {
+        subject.placeBet(smallBlind);
+        nextPlayer();
+        subject.placeBet(smallBlind*2); //big blind
+}
 
-  }
+private void reqAction(Player player) {
+        Action action = player.getAction(Board.getInstance().getPreviousAmount());
+        switch(action) {
+        case CHECK:
+                player.placeBet(Board.getInstance().getPreviousAmount());
+                break;
+        default:
+                System.out.println("Handle RAISE and FOLD");
+        }
+}
 
-  public void turn() {
+public void flop() {
 
-  }
+}
 
-  public void river() {
+public void turn() {
 
-  }
+}
 
-  public void declareWinner() {
+public void river() {
 
-  }
+}
 
-  private void nextPlayer() {
-    int nextIdx = players.indexOf(subject) + 1;
-    if(nextIdx == players.size()) {
-      subject = players.get(0);
-    } else {
-      subject = players.get(nextIdx);
-    }
-  }
+public void declareWinner() {
+
+}
+
+private void nextPlayer() {
+        int nextIdx = players.indexOf(subject) + 1;
+        if(nextIdx == players.size()) {
+                subject = players.get(0);
+        } else {
+                subject = players.get(nextIdx);
+        }
+}
 
 
 }
