@@ -24,9 +24,9 @@ public static void main(String[] args) {
 
         } while ( players.size()<numberOfPlayers );
 
-        Dealer.getInstance().setSmallBlind(smallBlind);
         Dealer.getInstance().setName("Dealer")
         .setPlayers(players,chips)
+        .setSmallBlind(smallBlind)
         .startSession();
 }
 

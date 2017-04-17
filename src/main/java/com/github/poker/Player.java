@@ -66,6 +66,4 @@ public Action getAction(int prevAmount) {
 }
 
 
-
-
 }

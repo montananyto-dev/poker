@@ -39,11 +39,9 @@ public Dealer setPlayers(ArrayList<Player> players, int chips) {
         this.players = players;
         return this;
 }
-public void setSmallBlind(int smallBlind){
+public Dealer setSmallBlind(int smallBlind){
         this.smallBlind = smallBlind;
-}
-public int getSmallBlind(){
-        return this.smallBlind;
+        return this;
 }
 
 private void declarePhase(String phaseName) {
@@ -89,6 +87,10 @@ private void reqAction(Player player) {
         case CHECK:
                 player.placeBet(Board.getInstance().getPreviousAmount());
                 break;
+        // case RAISE:
+        //         Validator.reqRaise("How much would you like to raise(min. "+Board.getInstance().getPreviousAmount()+" and max. "+Board.getInstance().getChips())",50,2000");
+        // case FOLD:
+
         default:
                 System.out.println("Handle RAISE and FOLD");
         }
