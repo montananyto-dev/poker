@@ -9,10 +9,13 @@ private static Dealer dealer;
 private Board board;
 
 private String name;
-private ArrayList<Player> players;
+private ArrayList<Player> sessionPlayers;
+private ArrayList<Player> gamePlayers;
 
 int smallIdx=0;
 int smallBlind;
+
+int checkCount=0;
 
 Player subject;
 
@@ -38,7 +41,7 @@ public Dealer setPlayers(ArrayList<Player> players, int chips) {
         for(Player player: players)
                 player.setChips(chips);
 
-        this.players = players;
+        this.sessionPlayers = players;
         return this;
 }
 public Dealer setSmallBlind(int smallBlind){
@@ -66,6 +69,7 @@ public void startSession() {
 
 private void startGame() {
         declarePhase("Game");
+        gamePlayers=new ArrayList<Player>(sessionPlayers);
         initialBets();
         flop();
         turn();
@@ -75,11 +79,16 @@ private void startGame() {
 
 public void initialBets() {
         declarePhase("Initial Bets");
-        subject=players.get(smallIdx);
+        subject=gamePlayers.get(smallIdx);
         placeBlinds();
 
-        nextPlayer();
-        reqAction(subject);
+        
+        while(checkCount < gamePlayers.size() || gamePlayers.size()==1) {
+                nextPlayer();
+                reqAction(subject);
+        }
+        System.out.println("Escaped!");
+        
 }
 
 private void placeBlinds() {
@@ -93,14 +102,21 @@ private void reqAction(Player player) {
         switch(action) {
         case CHECK:
                 player.placeBet(board.getPreviousAmount());
+
+                checkCount++;
                 break;
         case RAISE:
                 //int minimumRaise = board.getPreviousAmount();
                 int maximumRaise = player.getChips();
                 int amount = Validator.reqNumber("How much would you like to raise(min. 1 and max. "+maximumRaise,1,maximumRaise);
                 player.placeBet(amount+board.getPreviousAmount());
-                break;
 
+                checkCount=0;
+                break;
+        case FOLD:
+                gamePlayers.remove(player);
+                System.out.println("Removed player!");
+                break;
         default:
                 System.out.println("Handle RAISE and FOLD");
         }
@@ -123,11 +139,11 @@ public void declareWinner() {
 }
 
 private void nextPlayer() {
-        int nextIdx = players.indexOf(subject) + 1;
-        if(nextIdx == players.size()) {
-                subject = players.get(0);
+        int nextIdx = gamePlayers.indexOf(subject) + 1;
+        if(nextIdx == gamePlayers.size()) {
+                subject = gamePlayers.get(0);
         } else {
-                subject = players.get(nextIdx);
+                subject = gamePlayers.get(nextIdx);
         }
 }
 
