@@ -6,6 +6,8 @@ public class Dealer {
 
 private static Dealer dealer;
 
+private Board board;
+
 private String name;
 private ArrayList<Player> players;
 
@@ -41,6 +43,11 @@ public Dealer setPlayers(ArrayList<Player> players, int chips) {
 }
 public Dealer setSmallBlind(int smallBlind){
         this.smallBlind = smallBlind;
+        return this;
+}
+
+public Dealer setBoardInstance(Board board) {
+        this.board = board;
         return this;
 }
 
@@ -82,10 +89,10 @@ private void placeBlinds() {
 }
 
 private void reqAction(Player player) {
-        Action action = player.getAction(Board.getInstance().getPreviousAmount());
+        Action action = player.getAction(board.getPreviousAmount());
         switch(action) {
         case CHECK:
-                player.placeBet(Board.getInstance().getPreviousAmount());
+                player.placeBet(board.getPreviousAmount());
                 break;
         // case RAISE:
         //         Validator.reqRaise("How much would you like to raise(min. "+Board.getInstance().getPreviousAmount()+" and max. "+Board.getInstance().getChips())",50,2000");

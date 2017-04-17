@@ -27,6 +27,7 @@ public static void main(String[] args) {
         Dealer.getInstance().setName("Dealer")
         .setPlayers(players,chips)
         .setSmallBlind(smallBlind)
+        .setBoardInstance(Board.getInstance())
         .startSession();
 }
 
