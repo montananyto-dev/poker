@@ -1,4 +1,6 @@
 target/
 *.class
 *.jar
-*.DS_Store
+*.iml
+.idea
+.DS_Store
