@@ -107,8 +107,8 @@ private void reqAction(Player player) {
                 break;
         case RAISE:
                 int maximumRaise = player.getChips();
-                int amount = Validator.reqNumber("How much would you like to raise(min. 1 and max. "+maximumRaise,1,maximumRaise);
-                player.placeBet(amount+board.getPreviousAmount());
+                int amount = Validator.reqNumber("How much would you like to raise(min. 1 and max. "+maximumRaise+")",1,maximumRaise);
+                player.placeBet(amount + board.getPreviousAmount());
 
                 checkCount=0;
                 break;

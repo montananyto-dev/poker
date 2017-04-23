@@ -44,10 +44,10 @@ public static int reqNumber(String message, int min,int max) {
         boolean belowLimit = true;
         String input;
         int amount=0;
-        do {
+
+        while(!isNumber || aboveLimit || belowLimit)  {
                 System.out.println(message);
                 input = scan.nextLine();
-
                 isNumber = isNumeric(input);
                 if(isNumber) {
                         amount = Integer.parseInt(input);
@@ -58,7 +58,7 @@ public static int reqNumber(String message, int min,int max) {
                         if(belowLimit) { System.out.println("Below minimum. Enter a number between "+min+ " and "+max); }
                 } else { System.out.println("Not a number."); }
 
-        } while(!isNumber || aboveLimit || belowLimit);
+        }
 
         return amount;
 }
@@ -69,7 +69,7 @@ public static Action returnAction() {
         while(true) {
                 System.out.println("Check, Raise or Fold? [C,R,F]");
 
-                input = scan.next();
+                input = scan.nextLine();
                 input = input.toUpperCase();
                 switch(input) {
                 case "C":
