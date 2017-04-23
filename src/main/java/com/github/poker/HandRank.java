@@ -1,5 +1,5 @@
 package com.github.poker;
 
-class HandRank{
+class HandRank {
 
 }

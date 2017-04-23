@@ -1,8 +1,8 @@
 package com.github.poker;
 
 public enum Suit {
-  CLUB,
-  SPADE,
-  DIAMOND,
-  HEART
+    CLUB,
+    SPADE,
+    DIAMOND,
+    HEART
 }

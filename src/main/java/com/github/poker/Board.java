@@ -5,54 +5,51 @@ import java.util.ArrayList;
 
 public class Board implements CardHolder {
 
-        private static Board board;
-        private ArrayList<Card> boardHand = new ArrayList<>();
-        private int pot;
-        private int previousAmount;
+    private static Board board;
+    private ArrayList<Card> boardHand = new ArrayList<>();
+    private int pot;
+    private int previousAmount;
 
-        private Board(){
+    private Board(){
+
+    }
+
+    public static Board getInstance(){
+        if(board == null) {
+            board = new Board();
         }
+        return board;
+    }
 
-        public static Board getInstance(){
-                if(board == null) {
-                        board = new Board();
-                }
-                return board;
+    public void receiveCard(Card newCard) {
+        boardHand.add(newCard);
+    }
+
+    public void printHand() {
+        for(Card card : boardHand) {
+            System.out.println(">"+card);
         }
+    }
 
-        public void receiveCard(Card newCard) {
-                boardHand.add(newCard);
-        }
+    public void setBoardHand(ArrayList<Card> boardHand){
+        this.boardHand = new ArrayList<Card>();
+        Deck.getInstance().giveCard(this,3);
+    }
 
-        public void printHand() {
-            for(Card card : boardHand) {
-                System.out.println(">"+card);
-            }
-        }
+    public ArrayList<Card> getBoardHand(){
+        return boardHand;
+    }
 
-        public void setBoardHand(ArrayList<Card> boardHand){
-                this.boardHand = new ArrayList<Card>();
-                Deck.getInstance().giveCard(this,3);
+    public void addToPot(int amount, int diff){
+        this.pot+=amount-diff;
+        this.previousAmount =amount;
+    }
 
-        }
+    public int getPreviousAmount() {
+        return this.previousAmount;
+    }
 
-        public ArrayList<Card> getBoardHand(){
-                return boardHand;
-        }
-
-        public void addToPot(int amount, int diff){
-                this.pot+=amount-diff;
-                this.previousAmount =amount;
-        }
-
-        public int getPreviousAmount() {
-                return this.previousAmount;
-        }
-
-
-
-        public int getPot(){
-                return pot;
-        }
-
+    public int getPot(){
+        return pot;
+    }
 }

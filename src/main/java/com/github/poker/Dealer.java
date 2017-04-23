@@ -4,70 +4,70 @@ import java.util.ArrayList;
 
 public class Dealer {
 
-private static Dealer dealer;
+    private static Dealer dealer;
 
-private Board board;
+    private Board board;
 
-private String name;
-private ArrayList<Player> sessionPlayers;
-private ArrayList<Player> gamePlayers;
+    private String name;
+    private ArrayList<Player> sessionPlayers;
+    private ArrayList<Player> gamePlayers;
 
-int smallIdx=0;
-int smallBlind;
+    int smallIdx=0;
+    int smallBlind;
 
-int checkCount;
+    int checkCount;
 
-Player subject;
+    Player subject;
 
-private Dealer() {
-}
+    private Dealer() {}
 
-public static Dealer getInstance() {
+    public static Dealer getInstance() {
         if(dealer == null)
-                dealer = new Dealer();
+            dealer = new Dealer();
         return dealer;
-}
+    }
 
-public Dealer setName(String name) {
+    public Dealer setName(String name) {
         this.name = name;
         return this;
-}
+    }
 
-public String getName(){
+    public String getName(){
         return name;
-}
+    }
 
-public Dealer setPlayers(ArrayList<Player> players, int chips) {
+    public Dealer setPlayers(ArrayList<Player> players, int chips) {
         for(Player player: players)
-                player.setChips(chips);
+            player.setChips(chips);
 
         this.sessionPlayers = players;
         return this;
-}
-public Dealer setSmallBlind(int smallBlind){
+    }
+
+    public Dealer setSmallBlind(int smallBlind){
         this.smallBlind = smallBlind;
         return this;
-}
+    }
 
-public Dealer setBoardInstance(Board board) {
+    public Dealer setBoardInstance(Board board) {
         this.board = board;
         return this;
-}
+    }
 
-private void declarePhase(String phaseName) {
+    private void declarePhase(String phaseName) {
         String text=phaseName+" Start";
         System.out.println(text);
         for (char c : text.toCharArray())
-                System.out.print("=");
+            System.out.print("=");
         System.out.println();
-}
+    }
 
-public void startSession() {
+    public void startSession() {
         declarePhase("Session");
         startGame();
-}
+    }
 
-private void startGame() {
+    private void startGame() {
         declarePhase("Game");
         gamePlayers=new ArrayList<Player>(sessionPlayers);
 
@@ -85,74 +85,71 @@ private void startGame() {
         turn();
         river();
         declareWinner();
-}
+    }
 
-public void betting() {
+    public void betting() {
         checkCount=0;
         while(checkCount < gamePlayers.size()-1) {
-                reqAction(subject);
-                nextPlayer();
+            reqAction(subject);
+            nextPlayer();
         }
         System.out.println("Escaped!");
-}
+    }
 
-private void placeBlinds() {
+    private void placeBlinds() {
         subject.placeBet(smallBlind);
         nextPlayer();
         subject.placeBet(smallBlind*2); //big blind
         nextPlayer();
-}
+    }
 
-private void reqAction(Player player) {
+    private void reqAction(Player player) {
         Action action = player.getAction(board.getPreviousAmount());
+
         switch(action) {
-        case CHECK:
+            case CHECK:
                 player.placeBet(board.getPreviousAmount());
 
                 checkCount++;
                 break;
-        case RAISE:
+            case RAISE:
                 int maximumRaise = player.getChips();
                 int amount = Validator.reqNumber("How much would you like to raise(min. 1 and max. "+maximumRaise+")",1,maximumRaise);
                 player.placeBet(amount + board.getPreviousAmount());
 
                 checkCount=0;
                 break;
-        case FOLD:
+            case FOLD:
                 gamePlayers.remove(player);
                 System.out.println("Removed player!");
                 break;
-        default:
+            default:
                 System.out.println("Handle RAISE and FOLD");
         }
-}
+    }
 
-public void flop() {
+    public void flop() {
 
+    }
 
-}
-
-public void turn() {
+    public void turn() {
         System.out.println("Additional card to the flop face up ");
+    }
 
-}
-
-public void river() {
+    public void river() {
         System.out.println("Additional card to the turn face up ");
-}
+    }
 
-public void declareWinner() {
+    public void declareWinner() {
 
-}
+    }
 
-private void nextPlayer() {
+    private void nextPlayer() {
         int nextIdx = gamePlayers.indexOf(subject) + 1;
         if(nextIdx == gamePlayers.size()) {
-                subject = gamePlayers.get(0);
+            subject = gamePlayers.get(0);
         } else {
-                subject = gamePlayers.get(nextIdx);
+            subject = gamePlayers.get(nextIdx);
         }
-}
-
-
+    }
 }

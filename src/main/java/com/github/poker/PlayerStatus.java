@@ -1,5 +1,5 @@
 package com.github.poker;
 
-class PlayerStatus{
+class PlayerStatus {
 
 }
