@@ -29,11 +29,13 @@ public class Board implements CardHolder {
                 Deck.getInstance().giveCard(this,3);
 
         }
+
         public ArrayList<Card> getBoardHand(){
                 return boardHand;
         }
-        public void addToPot(int amount){
-                this.pot+=amount;
+
+        public void addToPot(int amount, int diff){
+                this.pot+=amount-diff;
                 this.previousAmount =amount;
         }
 
