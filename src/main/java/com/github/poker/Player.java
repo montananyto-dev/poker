@@ -2,15 +2,15 @@ package com.github.poker;
 
 import java.util.ArrayList;
 
-public class Player implements CardHolder {
+public class Player extends CardHolder {
 
     private String name;
-    private ArrayList<Card> hand;
+    //private ArrayList<Card> hand;
     private int chips, previousBet;
 
     public Player (String name){
+        super();
         this.name = name;
-        this.hand = new ArrayList<Card>();
         previousBet=0;
 
         //Initial hand
@@ -23,10 +23,6 @@ public class Player implements CardHolder {
         this.chips = chips;
     }
 
-    public void receiveCard(Card newCard) {
-        hand.add(newCard);
-    }
-
     public String getName(){
         return name;
     }
@@ -35,13 +31,6 @@ public class Player implements CardHolder {
         return chips;
     }
 
-    public void printHand() {
-        System.out.println("["+this.name+"] has...");
-
-        for(int i=0; i<2; i++) {
-            System.out.println("\t>"+hand.get(i));
-        }
-    }
 
     public void placeBet(int amount) {
         chips-= amount-previousBet; //Consider previousBet when adding to the pot

@@ -3,15 +3,14 @@ package com.github.poker;
 
 import java.util.ArrayList;
 
-public class Board implements CardHolder {
+public class Board extends CardHolder {
 
     private static Board board;
-    private ArrayList<Card> boardHand = new ArrayList<>();
     private int pot;
     private int previousAmount;
 
     private Board(){
-
+        super();
     }
 
     public static Board getInstance(){
@@ -19,16 +18,6 @@ public class Board implements CardHolder {
             board = new Board();
         }
         return board;
-    }
-
-    public void receiveCard(Card newCard) {
-        boardHand.add(newCard);
-    }
-
-    public void printHand() {
-        for(Card card : boardHand) {
-            System.out.println(">"+card);
-        }
     }
 
     public void addToPot(int amount, int diff){
