@@ -83,7 +83,7 @@ public void initialBets() {
         placeBlinds();
 
         
-        while(checkCount < gamePlayers.size() || gamePlayers.size()==1) {
+        while(checkCount < gamePlayers.size()-1) {
                 nextPlayer();
                 reqAction(subject);
         }
