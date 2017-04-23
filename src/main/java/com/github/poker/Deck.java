@@ -31,9 +31,4 @@ class Deck {
             receiver.receiveCard(drawn);
         }
     }
-
-    public void displayAllCards(){
-        for(Card card : cards )
-            System.out.println(card.toString()+"\n");
-        }
 }

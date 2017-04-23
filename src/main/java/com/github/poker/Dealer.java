@@ -32,10 +32,6 @@ public class Dealer {
         return this;
     }
 
-    public String getName(){
-        return name;
-    }
-
     public Dealer setPlayers(ArrayList<Player> players, int chips) {
         for(Player player: players)
             player.setChips(chips);

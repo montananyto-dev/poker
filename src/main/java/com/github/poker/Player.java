@@ -27,20 +27,8 @@ public class Player implements CardHolder {
         hand.add(newCard);
     }
 
-    public void setName(String name){
-        this.name = name;
-    }
-
     public String getName(){
         return name;
-    }
-
-    public void setHand(ArrayList<Card> hand){
-        this.hand = hand;
-    }
-
-    public ArrayList<Card> getHand(){
-        return hand;
     }
 
     public int getChips(){

@@ -31,15 +31,6 @@ public class Board implements CardHolder {
         }
     }
 
-    public void setBoardHand(ArrayList<Card> boardHand){
-        this.boardHand = new ArrayList<Card>();
-        Deck.getInstance().giveCard(this,3);
-    }
-
-    public ArrayList<Card> getBoardHand(){
-        return boardHand;
-    }
-
     public void addToPot(int amount, int diff){
         this.pot+=amount-diff;
         this.previousAmount =amount;
@@ -49,7 +40,4 @@ public class Board implements CardHolder {
         return this.previousAmount;
     }
 
-    public int getPot(){
-        return pot;
-    }
 }
