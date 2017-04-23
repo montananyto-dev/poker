@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Board implements CardHolder {
 
         private static Board board;
-        private ArrayList<Card> boardHand;
+        private ArrayList<Card> boardHand = new ArrayList<>();
         private int pot;
         private int previousAmount;
 
@@ -22,6 +22,12 @@ public class Board implements CardHolder {
 
         public void receiveCard(Card newCard) {
                 boardHand.add(newCard);
+        }
+
+        public void printHand() {
+            for(Card card : boardHand) {
+                System.out.println(">"+card);
+            }
         }
 
         public void setBoardHand(ArrayList<Card> boardHand){
@@ -42,6 +48,8 @@ public class Board implements CardHolder {
         public int getPreviousAmount() {
                 return this.previousAmount;
         }
+
+
 
         public int getPot(){
                 return pot;

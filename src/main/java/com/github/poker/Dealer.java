@@ -15,7 +15,7 @@ private ArrayList<Player> gamePlayers;
 int smallIdx=0;
 int smallBlind;
 
-int checkCount=0;
+int checkCount;
 
 Player subject;
 
@@ -70,31 +70,37 @@ public void startSession() {
 private void startGame() {
         declarePhase("Game");
         gamePlayers=new ArrayList<Player>(sessionPlayers);
-        initialBets();
-        flop();
+
+        declarePhase("Initial Bets");
+        subject=gamePlayers.get(smallIdx);
+        placeBlinds();
+        betting();
+
+        declarePhase("Flop");
+        Deck.getInstance().giveCard(board,3);
+        board.printHand();
+        subject=gamePlayers.get(smallIdx);
+        betting();
+
         turn();
         river();
         declareWinner();
 }
 
-public void initialBets() {
-        declarePhase("Initial Bets");
-        subject=gamePlayers.get(smallIdx);
-        placeBlinds();
-
-        
+public void betting() {
+        checkCount=0;
         while(checkCount < gamePlayers.size()-1) {
-                nextPlayer();
                 reqAction(subject);
+                nextPlayer();
         }
         System.out.println("Escaped!");
-        
 }
 
 private void placeBlinds() {
         subject.placeBet(smallBlind);
         nextPlayer();
         subject.placeBet(smallBlind*2); //big blind
+        nextPlayer();
 }
 
 private void reqAction(Player player) {
@@ -122,7 +128,7 @@ private void reqAction(Player player) {
 }
 
 public void flop() {
-        System.out.print("First 3 cards face up");
+
 
 }
 
