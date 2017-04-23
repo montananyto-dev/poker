@@ -1,11 +1,8 @@
 package com.github.poker;
 
-import java.util.ArrayList;
-
 public class Player extends CardHolder {
 
     private String name;
-    //private ArrayList<Card> hand;
     private int chips, previousBet;
 
     public Player (String name){

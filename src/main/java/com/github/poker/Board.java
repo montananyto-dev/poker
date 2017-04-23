@@ -1,8 +1,6 @@
 
 package com.github.poker;
 
-import java.util.ArrayList;
-
 public class Board extends CardHolder {
 
     private static Board board;
