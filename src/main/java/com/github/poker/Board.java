@@ -9,6 +9,7 @@ public class Board extends CardHolder {
 
     private Board(){
         super();
+        pot=0;
     }
 
     public static Board getInstance(){
@@ -20,7 +21,7 @@ public class Board extends CardHolder {
 
     public void addToPot(int amount, int diff){
         this.pot+=amount-diff;
-        this.previousAmount =amount;
+        this.previousAmount=amount;
     }
 
     public int getPreviousAmount() {
